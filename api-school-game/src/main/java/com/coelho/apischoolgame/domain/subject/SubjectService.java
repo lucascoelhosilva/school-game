@@ -10,6 +10,8 @@ public interface SubjectService {
 
     Subject getById(Long id);
 
+    void updateById(Long id, Subject subject);
+
     void deleteById(Long id);
 
     void deleteAll();

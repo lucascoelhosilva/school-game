@@ -10,7 +10,9 @@ services:
   api-school-game:
     container_name: api-school-game
     image: school-game
-    build: api-school-game/Dockerfile
+    build:
+      context: ./api-school-game
+      dockerfile: Dockerfile
     environment:
       SERVER_PORT: 8094
       DATABASE_URL: "jdbc:postgresql://db-school-game:5432/school_game"

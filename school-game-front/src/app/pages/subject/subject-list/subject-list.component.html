@@ -12,7 +12,7 @@
                             <h3 class="mb-0">Matérias</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">Create</a>
+                            <a (click)="getNavigation('subjects', '')" class="btn btn-sm btn-primary">Create</a>
                         </div>
                     </div>
                 </div>
@@ -45,9 +45,9 @@
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                                             <a class="dropdown-item" href="javascript:void(0)"
-                                                (click)="view(item.id)">View</a>
+                                                (click)="getNavigation('subjects', item.id)">View</a>
                                             <a class="dropdown-item" href="javascript:void(0)"
-                                                (click)="edit(item)">Edit</a>
+                                                (click)="getNavigation('subjects', item.id)">Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0)"
                                                 (click)="delete(item.id)">Delete</a>
                                         </div>

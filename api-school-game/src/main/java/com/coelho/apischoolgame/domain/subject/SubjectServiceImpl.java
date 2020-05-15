@@ -44,6 +44,18 @@ class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
+    public void updateById(@NonNull Long id, @NonNull Subject subject) {
+        log.info("Creating {}", subject);
+        if (repository.existsById(id)) {
+            subject.setId(id);
+            repository.saveAndFlush(subject);
+        } else {
+            log.info("Subject id {} not found", id);
+            throw new NotFoundException("Subject id not found");
+        }
+    }
+
+    @Override
     public void deleteById(@NonNull Long id) {
         log.info("Deleting Subject=[{}]", id);
         repository.deleteById(id);
