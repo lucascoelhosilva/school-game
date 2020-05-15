@@ -1,0 +1,21 @@
+server:
+  port: ${SERVER_PORT:8094}
+
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    hikari:
+      connectionTimeout: ${POOL_CONNECTION_TIMEOUT:15000}
+      minimumIdle: ${POOL_MINIMUM_IDLE:5}
+      maximumPoolSize: ${POOL_MAXIMUM_SIZE:30}
+      idleTimeout: ${POOL_IDLE_TIMEOUT:180000}
+      maxLifetime: ${POOL_MAX_LIFETIME:90000}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: POSTGRESQL
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

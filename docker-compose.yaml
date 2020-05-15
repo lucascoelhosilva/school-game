@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  db-school-game:
+    image: postgres
+    container_name: db-school-game
+    environment:
+      POSTGRES_PASSWORD: school-game
+      POSTGRES_USER: school-game
+      POSTGRES_DB: school_game
+  api-school-game:
+    container_name: api-school-game
+    image: school-game
+    build: api-school-game/Dockerfile
+    environment:
+      SERVER_PORT: 8094
+      DATABASE_URL: "jdbc:postgresql://db-school-game:5432/school_game"
+      DATABASE_USERNAME: "school-game"
+      DATABASE_PASSWORD: "school-game"
+      JAVA_OPTS: "-Djava.security.egd=file:/dev/./urandom -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8090"
+    ports:
+      - "8094:8094"
+      - "8090:8090"
+    depends_on:
+      - db-school-game

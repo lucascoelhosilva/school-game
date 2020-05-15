@@ -1,0 +1,1 @@
+export const SCHOOL_GAME = "http://localhost:8094/api/v1";
