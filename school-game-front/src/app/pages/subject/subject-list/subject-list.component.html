@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-light pb-8 pt-5 pt-md-8">
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--7">
@@ -12,7 +12,7 @@
                             <h3 class="mb-0">Subjects</h3>
                         </div>
                         <div class="col text-right">
-                            <button (click)="getNavigation('subjects', '')" class="btn btn-primary" type="button">Create</button>
+                            <button (click)="getNavigation('subjects/create', '')" class="btn btn-primary" type="button">Create</button>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,6 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Project</th>
                                 <th scope="col">Name</th>
                                 <th scope="col" class="text-right">Actions</th>
                             </tr>
@@ -29,15 +28,14 @@
                             <tr *ngFor="let item of subjects">
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <!-- <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                                        <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                                             <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                                        </a> -->
+                                        </a>
                                         <div class="media-body">
-                                            <span class="mb-0 text-sm">Argon Design System</span>
+                                            <span class="mb-0 text-sm">{{item.name}}</span>
                                         </div>
                                     </div>
                                 </th>
-                                <td>{{item.name}}</td>
                                 <td class="text-right">
                                     <div ngbDropdown placement="bottom-right">
                                         <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>

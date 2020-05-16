@@ -25,9 +25,8 @@ export class SubjectListComponent implements OnInit {
 
   getNavigation(link, id) {
     if (id === '') {
-      this.router.navigate([link + '/create']);
+      this.router.navigate([link]);
     } else {
-      console.log('passei aqui');
       this.router.navigate([link + '/' + id]);
     }
   }

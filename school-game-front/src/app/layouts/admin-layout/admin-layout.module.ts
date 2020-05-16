@@ -14,7 +14,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SubjectListComponent } from 'src/app/pages/subject/subject-list/subject-list.component';
-import {SubjectEditComponent} from '../../pages/subject/subject-edit/subject-edit.component';
+import { SubjectEditComponent } from '../../pages/subject/subject-edit/subject-edit.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({

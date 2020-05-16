@@ -22,7 +22,9 @@ export class SubjectEditComponent implements OnInit {
 
   ngOnInit() {
     const id: number = this.route.snapshot.params['id'];
-    if (id !== undefined) {
+    console.log('Subject Edit id', id);
+
+    if (id.toString() !== 'create') {
       this.findById(id);
     }
   }
@@ -36,6 +38,7 @@ export class SubjectEditComponent implements OnInit {
   }
 
   save() {
+    console.log('Subject Save', this.subject);
     this.subjectService.createOrUpdate(this.subject)
     .subscribe(data => console.log(data), error => console.log(error));
     this.subject = new Subject();
