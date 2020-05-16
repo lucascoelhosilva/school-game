@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Subject } from './subject.model';
+import { Topic } from './topic.model';
 import { SCHOOL_GAME } from '../../../app.apis';
 
 @Injectable({
@@ -11,42 +11,36 @@ import { SCHOOL_GAME } from '../../../app.apis';
 })
 // Comunicação com o backend 
 // acessar urls do backend com os methods GET, POST, PUT, DELETE
-export class SubjectService {
+export class TopicService {
 
   constructor(private http: HttpClient) { }
 
-  createOrUpdate(subject: Subject) {
-    if (subject.id == null) {
-      return this.http.post(`${SCHOOL_GAME}/subjects`, subject).pipe(
+  createOrUpdate(topic: Topic) {
+    if (topic.id == null) {
+      return this.http.post(`${SCHOOL_GAME}/topics`, topic).pipe(
           catchError(this.error)
       );
     } else {
-      return this.http.put(`${SCHOOL_GAME}/subjects/${subject.id}`, subject).pipe(
+      return this.http.put(`${SCHOOL_GAME}/topics/${topic.id}`, topic).pipe(
           catchError(this.error)
       );
     }
   }
 
-  // findAllFilters(page: number, count: number) {
-  //   return this.http.get(`${SCHOOL_GAME}/subjects/${page}/${count}`).pipe(
-  //       catchError(this.error)
-  //   );
-  // }
-
   getAll() {
-    return this.http.get(`${SCHOOL_GAME}/subjects`).pipe(
+    return this.http.get(`${SCHOOL_GAME}/subjects/10/topics`).pipe(
         catchError(this.error)
     );
   }
 
   findById(id: number) {
-    return this.http.get<Subject>(`${SCHOOL_GAME}/subjects/${id}`).pipe(
+    return this.http.get(`${SCHOOL_GAME}/topics/${id}`).pipe(
         catchError(this.error)
     );
   }
 
   delete(id: number) {
-    return this.http.delete(`${SCHOOL_GAME}/subjects/${id}`).pipe(
+    return this.http.delete(`${SCHOOL_GAME}/topics/${id}`).pipe(
         catchError(this.error)
     );
   }

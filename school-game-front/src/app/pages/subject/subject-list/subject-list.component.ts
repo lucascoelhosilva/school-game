@@ -19,10 +19,15 @@ export class SubjectListComponent implements OnInit {
   subjects: Subject[];
   message: {};
 
+
+  // esse método é carregado ao iniciar a página
   ngOnInit() {
     this.getAll();
   }
 
+  // método responsavel por mudar a rota do navegador 
+  // ex: http://localhost:4200/#/subjects/7
+  //     http://localhost:4200/#/subjects/create
   getNavigation(link, id) {
     if (id === '') {
       this.router.navigate([link]);
@@ -39,13 +44,15 @@ export class SubjectListComponent implements OnInit {
     });
   }
 
-  delete(subject): void {
+  delete(id): void {
     if (confirm('Are you sure?')) {
-      this.subjectService.delete(subject).subscribe(() => {
+      this.subjectService.delete(id).subscribe(() => {
             this.message = {type: 'success', message: 'Delete was successful!'};
+            
             setTimeout(() => {
               this.getAll();
             }, 1000);
+
           },
           err => {
             this.message = {type: 'warning', message: 'Error deleting. ' + err};
