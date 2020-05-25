@@ -26,8 +26,8 @@
 
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label">Subject</label>
-                    <select>
+                    <label class="form-control-label">Question</label>
+                    <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Search ...">
                       <option *ngFor="let item of subjects" [ngValue]="item.id">
                         {{ item.name }}
                       </option>
