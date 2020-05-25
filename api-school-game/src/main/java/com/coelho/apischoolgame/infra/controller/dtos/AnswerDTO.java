@@ -1,6 +1,7 @@
 package com.coelho.apischoolgame.infra.controller.dtos;
 
 import com.coelho.apischoolgame.domain.answer.Answer;
+import com.coelho.apischoolgame.domain.question.Question;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,8 +25,9 @@ public class AnswerDTO {
 
     public Answer toModel() {
         return Answer.builder()
-                .answerName(getName())
-                .correct(getCorrect())
-                .build();
+            .answerName(getName())
+            .correct(getCorrect())
+            .question(Question.builder().id(getQuestionId()).build())
+            .build();
     }
 }

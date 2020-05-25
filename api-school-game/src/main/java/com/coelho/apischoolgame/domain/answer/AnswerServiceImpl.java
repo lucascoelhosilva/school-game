@@ -38,9 +38,9 @@ class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public Collection<Answer> getAll(Long questionId) {
-        log.info("Getting Answer");
-        return repository.findByQuestion(Question.builder().id(questionId).build());
+    public Collection<Answer> getAll() {
+        log.info("Getting [{}] Answer", this.repository.count());
+        return repository.findAll();
     }
 
     @Override

@@ -15,6 +15,12 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SubjectListComponent } from 'src/app/pages/subject/subject-list/subject-list.component';
 import { SubjectEditComponent } from '../../pages/subject/subject-edit/subject-edit.component';
+import {TopicListComponent} from '../../pages/topics/topic-list/topic-list.component';
+import {TopicEditComponent} from '../../pages/topics/topic-edit/topic-edit.component';
+import {QuestionListComponent} from '../../pages/questions/question-list/question-list.component';
+import {QuestionEditComponent} from '../../pages/questions/question-edit/question-edit.component';
+import {AnswerListComponent} from '../../pages/answers/answer-list/answer-list.component';
+import {AnswerEditComponent} from '../../pages/answers/answer-edit/answer-edit.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -33,7 +39,13 @@ import { SubjectEditComponent } from '../../pages/subject/subject-edit/subject-e
     IconsComponent,
     MapsComponent,
     SubjectListComponent,
-    SubjectEditComponent
+    SubjectEditComponent,
+    TopicListComponent,
+    TopicEditComponent,
+    QuestionListComponent,
+    QuestionEditComponent,
+    AnswerListComponent,
+    AnswerEditComponent
   ]
 })
 

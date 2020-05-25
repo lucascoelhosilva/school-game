@@ -1,8 +1,8 @@
 package com.coelho.apischoolgame.infra.controller.dtos;
 
 import com.coelho.apischoolgame.domain.question.Question;
+import com.coelho.apischoolgame.domain.topics.Topic;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,11 +21,10 @@ public class QuestionDTO {
 
     private Long topicId;
 
-    private Set<AnswerDTO> answers;
-
     public Question toModel() {
         return Question.builder()
-                .questionName(getName())
-                .build();
+            .questionName(getName())
+            .topic(Topic.builder().id(getTopicId()).build())
+            .build();
     }
 }

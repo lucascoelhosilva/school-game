@@ -38,9 +38,9 @@ class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Collection<Question> getAll(Long topicId) {
-        log.info("Getting Answer");
-        return repository.findByTopic(Topic.builder().id(topicId).build());
+    public Collection<Question> getAll() {
+        log.info("Getting [{}] Answer", this.repository.count());
+        return repository.findAll();
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.coelho.apischoolgame.infra.controller.dtos;
 
+import com.coelho.apischoolgame.domain.subject.Subject;
 import com.coelho.apischoolgame.domain.topics.Topic;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @Builder
@@ -20,7 +22,8 @@ public class TopicDTO {
 
     public Topic toModel() {
         return Topic.builder()
-                .topicName(getName())
-                .build();
+            .topicName(getName())
+            .subject(Subject.builder().id(getSubjectId()).build())
+            .build();
     }
 }

@@ -3,42 +3,42 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Topic } from './topic.model';
 import { SCHOOL_GAME } from '../../../app.apis';
+import {Question} from './question.model';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class TopicService {
+export class QuestionService {
 
   constructor(private http: HttpClient) { }
 
-  createOrUpdate(topic: Topic) {
-    if (topic.id == null) {
-      return this.http.post(`${SCHOOL_GAME}/topics`, topic).pipe(
+  createOrUpdate(question: Question) {
+    if (question.id == null) {
+      return this.http.post(`${SCHOOL_GAME}/questions`, question).pipe(
           catchError(this.error)
       );
     } else {
-      return this.http.put(`${SCHOOL_GAME}/topics/${topic.id}`, topic).pipe(
+      return this.http.put(`${SCHOOL_GAME}/questions/${question.id}`, question).pipe(
           catchError(this.error)
       );
     }
   }
 
   getAll() {
-    return this.http.get(`${SCHOOL_GAME}/topics`).pipe(
+    return this.http.get(`${SCHOOL_GAME}/questions`).pipe(
         catchError(this.error)
     );
   }
 
   findById(id: number) {
-    return this.http.get(`${SCHOOL_GAME}/topics/${id}`).pipe(
+    return this.http.get(`${SCHOOL_GAME}/questions/${id}`).pipe(
         catchError(this.error)
     );
   }
 
   delete(id: number) {
-    return this.http.delete(`${SCHOOL_GAME}/topics/${id}`).pipe(
+    return this.http.delete(`${SCHOOL_GAME}/questions/${id}`).pipe(
         catchError(this.error)
     );
   }

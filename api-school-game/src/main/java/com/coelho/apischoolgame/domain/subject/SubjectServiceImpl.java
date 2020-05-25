@@ -27,7 +27,7 @@ class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Collection<Subject> getAll() {
-        log.info("Getting subjects");
+        log.info("Getting [{}] subjects", this.repository.count());
         return repository.findAll();
     }
 

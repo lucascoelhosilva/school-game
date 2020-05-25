@@ -1,0 +1,56 @@
+<div class="header bg-gradient-light pb-8 pt-5 pt-md-8">
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Answer</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="save()">
+            <div class="pl-lg-4">
+              <div class="row">
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Name</label>
+                    <input type="text" class="form-control form-control-alternative" id="name" required [(ngModel)]="answer.name" name="name">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <div class="custom-control custom-control-alternative custom-checkbox mb-3">
+                      <input class="custom-control-input" id="correct" type="checkbox" [checked]="answer.correct">
+                      <label class="custom-control-label" for="correct">Is Correct?</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Question</label>
+                    <select>
+                      <option *ngFor="let item of questions" [ngValue]="item.id">
+                        {{ item.name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button (click)="gotoList()" class="btn btn-default">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ public interface AnswerService {
 
     void create(Long questionId, Answer answer);
 
-    Collection<Answer> getAll(Long questionId);
+    Collection<Answer> getAll();
 
     Answer getById(Long id);
 

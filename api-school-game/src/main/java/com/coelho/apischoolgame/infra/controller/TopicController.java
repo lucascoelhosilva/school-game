@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/subjects/{subjectId}/topics")
+@RequestMapping("/api/v1/topics")
 @RequiredArgsConstructor
 public class TopicController {
 
@@ -27,14 +27,14 @@ public class TopicController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void post(@PathVariable Long subjectId, @Validated @RequestBody TopicDTO topicDTO) {
-        service.create(subjectId, topicDTO.toModel());
+    public void post(@Validated @RequestBody TopicDTO topicDTO) {
+        service.create(topicDTO.getSubjectId(), topicDTO.toModel());
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Collection<TopicDTO> get(@PathVariable Long subjectId) {
-        val topics = service.getAll(subjectId);
+    public Collection<TopicDTO> get() {
+        val topics = service.getAll();
         return topics.stream()
                 .map(topic -> TopicDTO.builder()
                         .id(topic.getId())

@@ -6,7 +6,7 @@ public interface TopicService {
 
     void create(Long subjectId, Topic topic);
 
-    Collection<Topic> getAll(Long subjectId);
+    Collection<Topic> getAll();
 
     Topic getById(Long id);
 

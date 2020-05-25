@@ -32,9 +32,9 @@ class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Collection<Topic> getAll(Long subjectId) {
-        log.info("Getting Topics");
-        return repository.findBySubject(Subject.builder().id(subjectId).build());
+    public Collection<Topic> getAll() {
+        log.info("Getting [{}] Topics", this.repository.count());
+        return repository.findAll();
     }
 
     @Override

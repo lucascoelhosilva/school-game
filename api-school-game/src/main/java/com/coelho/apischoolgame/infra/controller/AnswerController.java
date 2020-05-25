@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/questions/{questionId}/answers")
+@RequestMapping("/api/v1/answers")
 @RequiredArgsConstructor
 public class AnswerController {
 
@@ -27,14 +27,14 @@ public class AnswerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void post(@PathVariable Long questionId, @Validated @RequestBody AnswerDTO answerDTO) {
-        service.create(questionId, answerDTO.toModel());
+    public void post(@Validated @RequestBody AnswerDTO answerDTO) {
+        service.create(answerDTO.getQuestionId(), answerDTO.toModel());
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Collection<AnswerDTO> get(@PathVariable Long questionId) {
-        val answers = service.getAll(questionId);
+    public Collection<AnswerDTO> get() {
+        val answers = service.getAll();
         return answers.stream()
                 .map(answer -> AnswerDTO.builder()
                         .id(answer.getId())
@@ -51,10 +51,11 @@ public class AnswerController {
         val answer = service.getById(id);
 
         return AnswerDTO.builder()
-                .id(answer.getId())
-                .name(answer.getAnswerName())
-                .questionId(answer.getQuestion().getId())
-                .build();
+            .id(answer.getId())
+            .name(answer.getAnswerName())
+            .questionId(answer.getQuestion().getId())
+            .correct(answer.getCorrect())
+            .build();
     }
 
     @DeleteMapping("/{id}")
